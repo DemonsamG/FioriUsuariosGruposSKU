@@ -1,0 +1,127 @@
+<mvc:View
+    controllerName="com.my.users.controller.App"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    height="100%"
+>
+    <Page
+        id="shellPage"
+        showHeader="true"
+        enableScrolling="false"
+    >
+        <customHeader>
+
+            <OverflowToolbar id="shellBar">
+                <!-- El botón para colapsar el menú no funcionaaa -->
+                <Button
+                    id="menuButton"
+                    icon="sap-icon://menu2"
+                    press=".onMenuButtonPress"
+                />
+                <Image
+                    src="/img/logo.png"
+                    height="2.5rem"
+                    class="sapUiTinyMarginBeginEnd"
+                />
+                <Title text="Usuarios" />
+                <ToolbarSpacer />
+                <Button icon="sap-icon://search" />
+                <Button icon="sap-icon://account" />
+            </OverflowToolbar>
+        </customHeader>
+        <content>
+
+            <SplitApp
+                id="splitApp"
+                mode="ShowHideMode"
+            >
+                <masterPages>
+                    <Page
+                        id="masterPage"
+                        showHeader="false"
+                        class="sapUiResponsivePadding--remove"
+                    >
+                        <List
+                            id="navList"
+                            mode="None"
+                            itemPress=".onSideNavSelection"
+                        >
+                       
+                            <GroupHeaderListItem title="Gestión de Usuarios" />
+                 
+                            <StandardListItem
+                                title="Usuarios"
+                                icon="sap-icon://employee"
+                                type="Active"
+                            >
+                                <customData>
+                                    <core:CustomData
+                                        key="key"
+                                        value="users"
+                                    />
+                                </customData>
+                            </StandardListItem>
+                            <StandardListItem
+                                title="Roles"
+                                icon="sap-icon://role"
+                                type="Active"
+                            >
+                                <customData>
+                                    <core:CustomData
+                                        key="key"
+                                        value="roles"
+                                    />
+                                </customData>
+                            </StandardListItem>
+                            <!-- Items simples -->
+                            <StandardListItem
+                                title="Aplicaciones"
+                                icon="sap-icon://desktop-mobile"
+                                type="Active"
+                            >
+                                <customData>
+                                    <core:CustomData
+                                        key="key"
+                                        value="application"
+                                    />
+                                </customData>
+                            </StandardListItem>
+                            <StandardListItem
+                                title="Procesos"
+                                icon="sap-icon://process"
+                                type="Active"
+                            >
+                                <customData>
+                                    <core:CustomData
+                                        key="key"
+                                        value="process"
+                                    />
+                                </customData>
+                            </StandardListItem>
+                        </List>
+                    </Page>
+                </masterPages>
+                <detailPages>
+                    <App id="navContainer">
+                  
+                        <Page
+                            id="welcomePage"
+                            title="Bienvenido"
+                        >
+                            <content>
+                                <MessagePage
+                                    title="Bienvenido"
+                                    text="Seleccione una opción del menú lateral para comenzar."
+                                    icon="sap-icon://home"
+                                    description=""
+                                />
+                            </content>
+                        </Page>
+                    </App>
+                </detailPages>
+            </SplitApp>
+        </content>
+    </Page>
+</mvc:View>

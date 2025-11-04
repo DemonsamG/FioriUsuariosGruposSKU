@@ -1,0 +1,69 @@
+<mvc:View
+	controllerName="ui5.user.management.controller.RoleGroups"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page
+		id="groupsPage"
+		title="Grupos de Roles (ZTROLE_GRUPOSET)"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+		<content>
+			<Table
+				id="groupsTable"
+				class="sapUiResponsiveMargin"
+				width="auto"
+				items="{/roleGroups}"
+				mode="SingleSelectLeft"
+				selectionChange=".onSelectionChange">
+				
+				<headerToolbar>
+					<Toolbar>
+						<SearchField
+							id="groupSearchField"
+							width="50%"
+							liveChange=".onSearch"/>
+						<ToolbarSpacer/>
+						<Button
+							icon="sap-icon://add"
+							tooltip="Crear Grupo"
+							press=".onAdd"/>
+						<Button
+							icon="sap-icon://edit"
+							tooltip="Editar Grupo"
+							enabled="{viewState>/editEnabled}"
+							press=".onEdit"/>
+						<Button
+							icon="sap-icon://delete"
+							tooltip="Borrar Grupo"
+							enabled="{viewState>/deleteEnabled}"
+							press=".onDelete"/>
+					</Toolbar>
+				</headerToolbar>
+				
+				<columns>
+					<Column><Text text="ID Rol"/></Column>
+					<Column><Text text="ID Sociedad"/></Column>
+					<Column><Text text="ID Cedi"/></Column>
+					<Column><Text text="ID Grupo ET"/></Column>
+					<Column><Text text="ID"/></Column>
+					<Column><Text text="ID Privilegio"/></Column>
+					<Column><Text text="Activo"/></Column>
+				</columns>
+				
+				<items>
+					<ColumnListItem type="Active">
+						<cells>
+							<Text text="{ROLEID}"/>
+							<Text text="{IDSOCIEDAD}"/>
+							<Text text="{IDCEDI}"/>
+							<Text text="{IDGRUPOET}"/>
+							<Text text="{ID}"/>
+							<Text text="{PRIVILEGEID}"/>
+							<Switch state="{ACTIVED}" enabled="false"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,48 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+	<Dialog
+		id="addGroupDialog"
+		title="Crear Grupo de Rol">
+		<content>
+			<f:SimpleForm
+				editable="true"
+				layout="ResponsiveGridLayout">
+				
+				<Label text="ID Rol" required="true"/>
+				<Input value="{newGroup>/ROLEID}"/>
+				
+				<Label text="ID Sociedad" required="true"/>
+				<Input value="{newGroup>/IDSOCIEDAD}" type="Number"/>
+				
+				<Label text="ID Cedi" required="true"/>
+				<Input value="{newGroup>/IDCEDI}" type="Number"/>
+
+				<Label text="ID Grupo ET" required="true"/>
+				<Input value="{newGroup>/IDGRUPOET}"/>
+
+				<Label text="ID" required="true"/>
+				<Input value="{newGroup>/ID}"/>
+
+				<Label text="ID Privilegio" required="true"/>
+				<Input value="{newGroup>/PRIVILEGEID}"/>
+				
+				<Label text="Activo"/>
+				<Switch state="{newGroup>/ACTIVED}"/>
+
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button
+				text="Guardar"
+				type="Emphasized"
+				press=".onSaveAdd"/>
+		</beginButton>
+		<endButton>
+			<Button
+				text="Cancelar"
+				press=".onCloseAddDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

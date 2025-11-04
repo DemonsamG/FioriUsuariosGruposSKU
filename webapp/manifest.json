@@ -1,0 +1,114 @@
+{
+	"_version": "1.59.0",
+	"sap.app": {
+		"...": "..."
+	},
+	"sap.ui": {
+		"...": "..."
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "ui5.user.management.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		},
+		"dependencies": {
+			"minUI5Version": "1.124.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "ui5.user.management.i18n.i18n"
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "ui5.user.management.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "Main",
+					"pattern": "",
+					"target": [
+						"Main"
+					]
+				},
+				{
+					"name": "Users",
+					"pattern": "users",
+					"target": [
+						"Users"
+					]
+				},
+				{
+					"name": "Application",
+					"pattern": "application",
+					"target": [
+						"Application"
+					]
+				},
+				{
+					"name": "RoleAppPrivileges",
+					"pattern": "roleappprivileges",
+					"target": [
+						"RoleAppPrivileges"
+					]
+				},
+				
+				{
+					"name": "RoleGroups",
+					"pattern": "rolegroups",
+					"target": [
+						"RoleGroups"
+					]
+				}
+			],
+			"targets": {
+				"Main": {
+					"viewName": "Main",
+					"viewId": "main",
+					"viewLevel": 1
+				},
+				"Users": {
+					"viewName": "Users",
+					"viewId": "users",
+					"viewLevel": 2
+				},
+				"Application": {
+					"viewName": "Application",
+					"viewId": "application",
+					"viewLevel": 2
+				},
+				"RoleAppPrivileges": {
+					"viewName": "RoleAppPrivileges",
+					"viewId": "roleAppPrivileges",
+					"viewLevel": 2
+				},
+				
+				"RoleGroups": {
+					"viewName": "RoleGroups",
+					"viewId": "roleGroups",
+					"viewLevel": 2
+				}
+			}
+		}
+	}
+}
