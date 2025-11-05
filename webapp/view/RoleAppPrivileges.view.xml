@@ -1,40 +1,40 @@
 <mvc:View
-	controllerName="fioriusuariosgrupossku.controller.RoleGroups"
+	controllerName="fioriusuariosgrupossku.controller.RoleAppPrivileges"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
 	<Page
-		id="groupsPage"
-		title="Grupos de Roles (ZTROLE_GRUPOSET)"
+		id="privilegesPage"
+		title="Privilegios de App (ZTROL_APP_PRI_PRO)"
 		showNavButton="true"
 		navButtonPress=".onNavBack">
 		<content>
 			<Table
-				id="groupsTable"
+				id="privilegesTable"
 				class="sapUiResponsiveMargin"
 				width="auto"
-				items="{/roleGroups}"
+				items="{/roleAppPrivileges}"
 				mode="SingleSelectLeft"
 				selectionChange=".onSelectionChange">
 				
 				<headerToolbar>
 					<Toolbar>
 						<SearchField
-							id="groupSearchField"
+							id="privSearchField"
 							width="50%"
 							liveChange=".onSearch"/>
 						<ToolbarSpacer/>
 						<Button
 							icon="sap-icon://add"
-							tooltip="Crear Grupo"
+							tooltip="Crear Privilegio"
 							press=".onAdd"/>
 						<Button
 							icon="sap-icon://edit"
-							tooltip="Editar Grupo"
+							tooltip="Editar Privilegio"
 							enabled="{viewState>/editEnabled}"
 							press=".onEdit"/>
 						<Button
 							icon="sap-icon://delete"
-							tooltip="Borrar Grupo"
+							tooltip="Borrar Privilegio"
 							enabled="{viewState>/deleteEnabled}"
 							press=".onDelete"/>
 					</Toolbar>
@@ -42,11 +42,10 @@
 				
 				<columns>
 					<Column><Text text="ID Rol"/></Column>
-					<Column minScreenWidth="Tablet" demandPopin="true"><Text text="ID Sociedad"/></Column>
-					<Column minScreenWidth="Tablet" demandPopin="true"><Text text="ID Cedi"/></Column>
-					<Column><Text text="ID Grupo ET"/></Column>
-					<Column><Text text="ID"/></Column>
+					<Column><Text text="ID App"/></Column>
 					<Column><Text text="ID Privilegio"/></Column>
+					<Column><Text text="ID Proceso"/></Column>
+					<Column><Text text="ID Vista"/></Column>
 					<Column><Text text="Activo"/></Column>
 				</columns>
 				
@@ -54,11 +53,10 @@
 					<ColumnListItem type="Active">
 						<cells>
 							<Text text="{ROLEID}"/>
-							<Text text="{IDSOCIEDAD}"/>
-							<Text text="{IDCEDI}"/>
-							<Text text="{IDGRUPOET}"/>
-							<Text text="{ID}"/>
+							<Text text="{APPID}"/>
 							<Text text="{PRIVILEGEID}"/>
+							<Text text="{PROCESSID}"/>
+							<Text text="{VIEWID}"/>
 							<Switch state="{ACTIVED}" enabled="false"/>
 						</cells>
 					</ColumnListItem>

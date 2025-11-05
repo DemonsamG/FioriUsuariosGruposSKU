@@ -3,35 +3,35 @@
 	xmlns:core="sap.ui.core"
 	xmlns:f="sap.ui.layout.form">
 	<Dialog
-		id="addUserDialog"
-		title="Agregar Usuario">
+		id="editUserDialog"
+		title="Editar Usuario">
 		<content>
 			<f:SimpleForm
 				editable="true"
 				layout="ResponsiveGridLayout">
 				<Label text="User ID" required="true"/>
-				<Input id="addUserID" value="{newUser>/USERID}"/>
+				<Input id="editUserID" value="{USERID}" editable="false"/>
 				
 				<Label text="Nombre de Usuario" required="true"/>
-				<Input id="addUserName" value="{newUser>/USERNAME}"/>
+				<Input id="editUserName" value="{USERNAME}"/>
 				
 				<Label text="Alias"/>
-				<Input id="addAlias" value="{newUser>/ALIAS}"/>
+				<Input id="editAlias" value="{ALIAS}"/>
 				
 				<Label text="Email" required="true"/>
-				<Input id="addEmail" value="{newUser>/EMAIL}"/>
+				<Input id="editEmail" value="{EMAIL}"/>
 			</f:SimpleForm>
 		</content>
 		<beginButton>
 			<Button
 				text="Guardar"
 				type="Emphasized"
-				press=".onSaveAdd"/>
+				press=".onSaveEdit"/>
 		</Button>
 		<endButton>
 			<Button
 				text="Cancelar"
-				press=".onCloseAddDialog"/>
+				press=".onCloseEditDialog"/>
 		</endButton>
 	</Dialog>
 </core:FragmentDefinition>

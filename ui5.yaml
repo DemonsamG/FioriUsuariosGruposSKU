@@ -1,6 +1,6 @@
 specVersion: "4.0"
 metadata:
-  name: com.my.users
+  name: ui5.user.management  # <-- ¡Esta es la corrección!
 type: application
 framework:
   name: OpenUI5

@@ -19,6 +19,7 @@ sap.ui.define([
 			},
 			createLocalModel: function () {
 				var oModel = new JSONModel({
+					// Datos para la lista de navegación
 					"navigation": [
 						{
 							"title": "Usuarios",
@@ -32,12 +33,12 @@ sap.ui.define([
 							"title": "Privilegios de App",
 							"key": "RoleAppPrivileges"
 						},
-						// --- AÑADIR ESTE NUEVO ITEM ---
 						{
 							"title": "Grupos de Roles",
 							"key": "RoleGroups"
 						}
 					],
+					// Datos para la tabla de Usuarios
 					"users": [
 						{
 							"USERID": "001",
@@ -58,16 +59,7 @@ sap.ui.define([
 							"EMAIL": "peter.jones@example.com"
 						}
 					],
-					"applications": [
-						{
-							"APPID": "APP01",
-							"NAME": "Gestor de Ventas"
-						},
-						{
-							"APPID": "APP02",
-							"NAME": "Portal de RH"
-						}
-					],
+					// Datos para la tabla de Privilegios de App (ZTROL_APP_PRI_PRO)
 					"roleAppPrivileges": [
 						{
 							"ROLEID": "ADMIN",
@@ -94,7 +86,7 @@ sap.ui.define([
 							"ACTIVED": false
 						}
 					],
-					// --- AÑADIR ESTE NUEVO BLOQUE DE DATOS ---
+					// Datos para la tabla de Grupos de Roles (ZTROLE_GRUPOSET)
 					"roleGroups": [
 						{
 							"ROLEID": "ADMIN",

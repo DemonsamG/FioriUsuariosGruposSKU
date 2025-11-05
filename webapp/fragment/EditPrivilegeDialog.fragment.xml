@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+	<Dialog
+		id="editPrivilegeDialog"
+		title="Editar Privilegio">
+		<content>
+			<f:SimpleForm
+				editable="true"
+				layout="ResponsiveGridLayout">
+				
+				<Label text="ID Rol"/>
+				<Input value="{ROLEID}" editable="false"/>
+				
+				<Label text="ID App"/>
+				<Input value="{APPID}" editable="false"/>
+				
+				<Label text="ID Privilegio"/>
+				<Input value="{PRIVILEGEID}" editable="false"/>
+
+				<Label text="ID Proceso"/>
+				<Input value="{PROCESSID}" editable="false"/>
+
+				<Label text="ID Vista"/>
+				<Input value="{VIEWID}" editable="false"/>
+				
+				<Label text="Activo"/>
+				<Switch state="{ACTIVED}"/>
+
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button
+				text="Guardar"
+				type="Emphasized"
+				press=".onSaveEdit"/>
+		</Button>
+		<endButton>
+			<Button
+				text="Cancelar"
+				press=".onCloseEditDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

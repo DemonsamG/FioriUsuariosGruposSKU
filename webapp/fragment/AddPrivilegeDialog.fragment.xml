@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+	<Dialog
+		id="addPrivilegeDialog"
+		title="Crear Privilegio">
+		<content>
+			<f:SimpleForm
+				editable="true"
+				layout="ResponsiveGridLayout">
+				
+				<Label text="ID Rol" required="true"/>
+				<Input value="{newPrivilege>/ROLEID}"/>
+				
+				<Label text="ID App" required="true"/>
+				<Input value="{newPrivilege>/APPID}"/>
+				
+				<Label text="ID Privilegio" required="true"/>
+				<Input value="{newPrivilege>/PRIVILEGEID}"/>
+
+				<Label text="ID Proceso" required="true"/>
+				<Input value="{newPrivilege>/PROCESSID}"/>
+
+				<Label text="ID Vista" required="true"/>
+				<Input value="{newPrivilege>/VIEWID}"/>
+				
+				<Label text="Activo"/>
+				<Switch state="{newPrivilege>/ACTIVED}"/>
+
+			</f:SimpleForm>
+		</content>
+		<beginButton>
+			<Button
+				text="Guardar"
+				type="Emphasized"
+				press=".onSaveAdd"/>
+		</beginButton>
+		<endButton>
+			<Button
+				text="Cancelar"
+				press=".onCloseAddDialog"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

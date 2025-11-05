@@ -6,31 +6,25 @@ sap.ui.define([
 	"sap/ui/core/Fragment",
 	"sap/m/MessageBox"
 ],
-	/**
-	 * @param {typeof fioriusuariosgrupossku.controller.BaseController} BaseController
-	 */
 	function (BaseController, JSONModel, Filter, FilterOperator, Fragment, MessageBox) {
 		"use strict";
 
-		return BaseController.extend("fioriusuariosgrupossku.controller.RoleGroups", {
+		return BaseController.extend("fioriusuariosgrupossku.controller.RoleAppPrivileges", {
 			
 			onInit: function () {
-				// Modelo para estado de botones
 				this.getView().setModel(new JSONModel({
 					editEnabled: false,
 					deleteEnabled: false
 				}), "viewState");
 
-				// Modelo para el diálogo de "Crear"
 				this.getView().setModel(new JSONModel({
 					ROLEID: "",
-					IDSOCIEDAD: null,
-					IDCEDI: null,
-					IDGRUPOET: "",
-					ID: "",
+					APPID: "",
 					PRIVILEGEID: "",
+					PROCESSID: "",
+					VIEWID: "",
 					ACTIVED: true
-				}), "newGroup");
+				}), "newPrivilege");
 			},
 			
 			onNavBack: function () {
@@ -44,15 +38,16 @@ sap.ui.define([
 					var oFilter = new Filter({
 						filters: [
 							new Filter("ROLEID", FilterOperator.Contains, sQuery),
-							new Filter("IDGRUPOET", FilterOperator.Contains, sQuery),
-							new Filter("ID", FilterOperator.Contains, sQuery),
-							new Filter("PRIVILEGEID", FilterOperator.Contains, sQuery)
+							new Filter("APPID", FilterOperator.Contains, sQuery),
+							new Filter("PRIVILEGEID", FilterOperator.Contains, sQuery),
+							new Filter("PROCESSID", FilterOperator.Contains, sQuery),
+							new Filter("VIEWID", FilterOperator.Contains, sQuery)
 						],
 						and: false
 					});
 					aFilters.push(oFilter);
 				}
-				var oTable = this.byId("groupsTable");
+				var oTable = this.byId("privilegesTable");
 				var oBinding = oTable.getBinding("items");
 				oBinding.filter(aFilters);
 			},
@@ -64,53 +59,50 @@ sap.ui.define([
 				this.getView().getModel("viewState").setProperty("/deleteEnabled", bIsItemSelected);
 			},
 
-			// --- CREAR ---
 			onAdd: function () {
-				this.getView().getModel("newGroup").setData({
-					ROLEID: "", IDSOCIEDAD: null, IDCEDI: null, IDGRUPOET: "", ID: "", PRIVILEGEID: "", ACTIVED: true
+				this.getView().getModel("newPrivilege").setData({
+					ROLEID: "", APPID: "", PRIVILEGEID: "", PROCESSID: "", VIEWID: "", ACTIVED: true
 				});
-				this.loadAndOpenDialog("addGroupDialog", "fioriusuariosgrupossku.fragment.AddGroupDialog");
+				this.loadAndOpenDialog("addPrivilegeDialog", "fioriusuariosgrupossku.fragment.AddPrivilegeDialog");
 			},
 			onSaveAdd: function () {
-				var oNewGroup = this.getView().getModel("newGroup").getData();
+				var oNewPriv = this.getView().getModel("newPrivilege").getData();
 				var oModel = this.getView().getModel();
-				var aGroups = oModel.getProperty("/roleGroups");
+				var aPrivs = oModel.getProperty("/roleAppPrivileges");
 				
-				aGroups.unshift(oNewGroup);
+				aPrivs.unshift(oNewPriv);
 				oModel.refresh(true);
-				this.byId("addGroupDialog").close();
+				this.byId("addPrivilegeDialog").close();
 			},
 			onCloseAddDialog: function () {
-				this.byId("addGroupDialog").close();
+				this.byId("addPrivilegeDialog").close();
 			},
 
-			// --- EDITAR ---
 			onEdit: function () {
-				var oSelectedItem = this.byId("groupsTable").getSelectedItem();
+				var oSelectedItem = this.byId("privilegesTable").getSelectedItem();
 				if (!oSelectedItem) return;
 
 				var sPath = oSelectedItem.getBindingContext().getPath();
 				
-				this.loadAndOpenDialog("editGroupDialog", "fioriusuariosgrupossku.fragment.EditGroupDialog", function(oDialog) {
+				this.loadAndOpenDialog("editPrivilegeDialog", "fioriusuariosgrupossku.fragment.EditPrivilegeDialog", function(oDialog) {
 					oDialog.bindElement(sPath);
 				});
 			},
 			onSaveEdit: function () {
-				this.byId("editGroupDialog").close();
+				this.byId("editPrivilegeDialog").close();
 			},
 			onCloseEditDialog: function () {
-				this.byId("editGroupDialog").close();
+				this.byId("editPrivilegeDialog").close();
 			},
 
-			// --- BORRAR ---
 			onDelete: function () {
-				var oSelectedItem = this.byId("groupsTable").getSelectedItem();
+				var oSelectedItem = this.byId("privilegesTable").getSelectedItem();
 				if (!oSelectedItem) return;
 				
-				var oGroup = oSelectedItem.getBindingContext().getObject();
+				var oPriv = oSelectedItem.getBindingContext().getObject();
 				var sPath = oSelectedItem.getBindingContext().getPath();
 				
-				MessageBox.confirm("¿Está seguro de eliminar este grupo: " + oGroup.ID + "?", {
+				MessageBox.confirm("¿Está seguro de eliminar este privilegio?", {
 					title: "Confirmar Eliminación",
 					onClose: function (sAction) {
 						if (sAction === MessageBox.Action.OK) {
@@ -122,12 +114,12 @@ sap.ui.define([
 			_onDeleteConfirmed: function (sPath) {
 				var iIndex = parseInt(sPath.split("/").pop());
 				var oModel = this.getView().getModel();
-				var aGroups = oModel.getProperty("/roleGroups");
+				var aPrivs = oModel.getProperty("/roleAppPrivileges");
 
-				aGroups.splice(iIndex, 1);
+				aPrivs.splice(iIndex, 1);
 				oModel.refresh(true);
 
-				this.byId("groupsTable").removeSelections(true);
+				this.byId("privilegesTable").removeSelections(true);
 				this.getView().getModel("viewState").setProperty("/editEnabled", false);
 				this.getView().getModel("viewState").setProperty("/deleteEnabled", false);
 			},

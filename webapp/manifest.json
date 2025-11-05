@@ -1,14 +1,41 @@
 {
 	"_version": "1.59.0",
 	"sap.app": {
-		"...": "..."
+		"id": "fioriusuariosgrupossku",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"sourceTemplate": {
+			"id": "@sap/generator-fiori:basic",
+			"version": "1.14.0",
+			"toolsId": "73d4344e-1601-460d-8c43-1191054b17f3"
+		}
 	},
 	"sap.ui": {
-		"...": "..."
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
 	},
 	"sap.ui5": {
+		"flexEnabled": true,
 		"rootView": {
-			"viewName": "ui5.user.management.view.App",
+			"viewName": "fioriusuariosgrupossku.view.App",
 			"type": "XML",
 			"async": true,
 			"id": "App"
@@ -29,7 +56,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "ui5.user.management.i18n.i18n"
+					"bundleName": "fioriusuariosgrupossku.i18n.i18n"
 				}
 			}
 		},
@@ -38,7 +65,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "ui5.user.management.view",
+				"viewPath": "fioriusuariosgrupossku.view",
 				"controlAggregation": "pages",
 				"controlId": "app",
 				"clearControlAggregation": false
@@ -72,7 +99,6 @@
 						"RoleAppPrivileges"
 					]
 				},
-				
 				{
 					"name": "RoleGroups",
 					"pattern": "rolegroups",
@@ -102,7 +128,6 @@
 					"viewId": "roleAppPrivileges",
 					"viewLevel": 2
 				},
-				
 				"RoleGroups": {
 					"viewName": "RoleGroups",
 					"viewId": "roleGroups",
